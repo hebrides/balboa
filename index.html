@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💪</title>
@@ -9,8 +10,21 @@
     <link href="https://fonts.googleapis.com/css?family=League+Gothic" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body style="background: black;">
+</head>
+<style>
+    @keyframes crawl-left {
+        from {
+            transform: translateX(100vw);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+</style>
+
+</style>
+
+<body style="background: black;">
     <main style="
           overflow-x: scroll;
           overflow-y: hidden;">
@@ -21,17 +35,19 @@
             text-transform: uppercase;
             letter-spacing: -.015em;
             margin: 0;
-            margin-left: 100vw;
-            margin-right: 100%;
+            /* margin-left: 100vw;
+            margin-right: 100%; */
             padding: 0 20px;
             box-sizing: border-box;
             white-space: nowrap;
             scroll-behavior: smooth;
+            /* transition: all 2.5s ease-in-out; */
+            animation-name: crawl-left;
+            animation-duration: 8s;
             float: left;
-            color: white;">Rocky</h1>  
+            color: white;">Rocky</h1>
     </main>
-	<script src="index.js"></script>
-  </body>
+    <script src="index.js"></script>
+</body>
+
 </html>
-
-
