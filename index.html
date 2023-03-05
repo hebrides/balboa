@@ -8,8 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=League+Gothic" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"> -->
 </head>
 <style>
     @keyframes crawl-left {
@@ -17,7 +16,7 @@
             transform: translateX(100vw);
         }
         to {
-            transform: translateX(0);
+            transform: translateX(-100vw);
         }
     }
 </style>
@@ -46,13 +45,25 @@
             animation-timing-function: linear;
             text-align: center;
             color: white;">Rocky</h1>
+        <a href="#" onClick="playSound();">Click Here</a><br><br><br><br><br><br>
     </main>
-    <audio>
-        <source src="Rocky (1976) Opening Scroll.mp3.ogg" type="audio/ogg">
-        <source src="Rocky (1976) Opening Scroll.mp3" type="audio/mpeg">
+    <audio id="fanfare">
+        <source src="fanfare.ogg" type="audio/ogg">
+        <source src="fanfare.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
 </audio>
-    <script src="index.js"></script>
+    <script>
+/*        setTimeout(() => { // works Safari
+            document.getElementById('fanfare').play();
+        }, 001)
+*/ 
+
+// Browser needs a user interaction to play the sound 
+        function playSound() {
+            console.log("Play Sound")
+            document.getElementById('fanfare').play();
+        }
+    </script>
 </body>
 
 
