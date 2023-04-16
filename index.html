@@ -24,10 +24,28 @@
 </style>
 
 <body style="background: black;">
+
     <main style="
           overflow-x: scroll;
           overflow-y: hidden;">
-        <h1 style="
+        <form>
+            <label for="thenametoshow">Please enter your name:</label>
+            <input type="text" id="thenametoshow" name="thenametoshow" autofocus><br><br>
+            <button onclick="balboa();">DO IT!</button>
+        </form>
+    </main>
+
+    <audio id="fanfare">
+        <source src="audio/conti-title-scroll.ogg" type="audio/ogg">
+        <source src="audio/conti-title-scroll.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio>
+
+<script>
+        function balboa(){
+            const balboa =  document.querySelector('input').value || 'BALBOA';
+            document.querySelector('main').innerHTML = `
+            <h1 style="
             font-family: 'League Gothic', 'Arial Black', Impact, 'Franklin Gothic', sans-serif;
             font-weight: 800;
             font-size: calc(100vh);
@@ -44,25 +62,28 @@
             animation-duration: 8s;
             animation-timing-function: linear;
             text-align: center;
-            color: white;">Rocky</h1>
-        <a href="#" onClick="playSound();">Click Here</a><br><br><br><br><br><br>
-    </main>
-    <audio id="fanfare">
-        <source src="fanfare.ogg" type="audio/ogg">
-        <source src="fanfare.mp3" type="audio/mpeg">
-  Your browser does not support the audio tag.
-</audio>
-    <script>
-/*        setTimeout(() => { // works Safari
-            document.getElementById('fanfare').play();
-        }, 001)
-*/ 
-
-// Browser needs a user interaction to play the sound 
-        function playSound() {
-            console.log("Play Sound")
-            document.getElementById('fanfare').play();
+            color: white;">${balboa}</h1>
+            <br><br><br><br><br><br>`;
         }
+
+        function playSound() {
+            console.log(window.location.href);
+            document.querySelector('audio').play();
+        }
+
+        var currentPath = window.location.href;
+
+        function updatepath() {
+            // console.log(currentPath);
+            // window.history.replaceState(null,currentPath+"ROCKY"); 
+            // window.location.href = "#ROCKY";
+            // window.location.href = currentPath+"#ROCKY";
+            // console.log(currentPath);
+            //     console.log(window.location.pathname);
+            //     window.location.href = "ROCKY";
+        }
+        // Browser needs a user interaction to play the sound 
+
     </script>
 </body>
 
