@@ -10,19 +10,6 @@
     <link href="https://fonts.googleapis.com/css?family=League+Gothic" rel="stylesheet" type="text/css" />
     <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"> -->
 </head>
-<style>
-    @keyframes crawl-left {
-        from {
-            transform: translateX(100vw);
-        }
-        to {
-            transform: translateX(-100vw);
-        }
-    }
-</style>
-
-</style>
-
 <body style="background: black;">
 
     <main style="
@@ -31,20 +18,21 @@
         <form>
             <label for="thenametoshow">Please enter your name:</label>
             <input type="text" id="thenametoshow" name="thenametoshow" autofocus><br><br>
-            <button onclick="balboa();">DO IT!</button>
+            <button onclick="balboa();setTimeout(crawl,300);playSound();">DO IT!</button>
         </form>
     </main>
 
     <audio id="fanfare">
-        <source src="audio/conti-title-scroll.ogg" type="audio/ogg">
-        <source src="audio/conti-title-scroll.mp3" type="audio/mpeg">
+        <source src="media/conti-motif.ogg" type="audio/ogg">
+        <source src="media/conti-motif.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
 </audio>
 
 <script>
         function balboa(){
             const balboa =  document.querySelector('input').value || 'BALBOA';
-            document.querySelector('main').innerHTML = `
+            const main = document.querySelector('main');
+            main.innerHTML = `
             <h1 style="
             font-family: 'League Gothic', 'Arial Black', Impact, 'Franklin Gothic', sans-serif;
             font-weight: 800;
@@ -52,22 +40,42 @@
             text-transform: uppercase;
             letter-spacing: -.015em;
             margin: 0;
-            /* margin-left: 100vw;
-            margin-right: 100%; */
             padding: 0 20px;
             box-sizing: border-box;
             white-space: nowrap;
             scroll-behavior: smooth;
-            animation-name: crawl-left;
-            animation-duration: 8s;
-            animation-timing-function: linear;
             text-align: center;
-            color: white;">${balboa}</h1>
+            color: white;
+            transform: translateX(100vw);
+            display: inline-block;
+            ">${balboa}</h1>
             <br><br><br><br><br><br>`;
-        }
+
+        }        
+
+        function crawl() {
+            const h1 = document.querySelector('h1');
+            //scroll offscreen to the left the length of text, plus a little extra
+            const scrollTo = -h1.offsetWidth-10;  
+            h1.insertAdjacentHTML('beforebegin',
+            `<style>
+                @keyframes crawl-left {
+                    to {
+                        transform: translateX(${scrollTo}px);
+                    }
+                }
+            </style>`
+            );
+        
+            h1.style.cssText += `
+            animation-name: crawl-left;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            `;
+        }        
 
         function playSound() {
-            console.log(window.location.href);
             document.querySelector('audio').play();
         }
     </script>
