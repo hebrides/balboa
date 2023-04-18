@@ -10,15 +10,54 @@
     <link href="https://fonts.googleapis.com/css?family=League+Gothic" rel="stylesheet" type="text/css" />
     <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"> -->
 </head>
-<body style="background: black;">
+<style>
+    body {
+        background: black;
+        color: lightgray;
+        font-weight: 100;
+        text-align: center;
+        font-size: 120%;
+        letter-spacing: 2px;
+        font-family: "Helvetica Neue", sans-serif;
+    }
+    main {
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+    form {
+        height: 100px;
+        margin-top: -100px;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        width: 100%;
+    }
+    input {
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid lightgray;
+        outline: none;
+        padding: 15px 0;
+        width: 400px;
+        color: white;
+        text-align: center;
+        letter-spacing: 4px;
+    }
+    button {
+        padding: 5px 15px;
+        font-weight: 400;
+        font-size: 150%;
+        padding: 10px 25px;
+        background: black;
+        color: lightgray;
+    }
+</style>
+<body>
 
-    <main style="
-          overflow-x: scroll;
-          overflow-y: hidden;">
-        <form>
-            <label for="thenametoshow">Please enter your name:</label>
-            <input type="text" id="thenametoshow" name="thenametoshow" autofocus><br><br>
-            <button onclick="balboa();setTimeout(crawl,300);playSound();">DO IT!</button>
+    <main>
+        <form onsubmit="balboa();setTimeout(crawl,300);playSound();">
+            <label for="thenametoshow">What's your name?</label><br>
+            <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus>
         </form>
     </main>
 
@@ -45,7 +84,6 @@
             white-space: nowrap;
             scroll-behavior: smooth;
             text-align: center;
-            color: white;
             transform: translateX(100vw);
             display: inline-block;
             ">${balboa}</h1>
@@ -83,3 +121,74 @@
 
 
 </html>
+
+<!-- 
+                                                                 ..''..        
+              .;:;,.                                           .o0XNNNKo.      
+            .lXWMWWXk,                                        'OWMMMMMMNl      
+            .OMMMMMMM0,                                       oWMMMMMMMNc      
+            .OMMMMMMNk'                                       lNMMMMNKkc.      
+            '0MMMMKo'.                                      .cXMMMM0:.         
+            :XMMMK;                .....                  .lONMMMNk'           
+           .xWMMMk.              ;d0KKKK0d:.            ,dKWMMMMWx.            
+           ,KMMMMO.            .xNMMMMMMMMWKl.        .cXMMMMMMWk.             
+           ,0MMMMNx,          .xWMMMMMMMMMMMWo.    .,lONMMMMMMNx.              
+           .dWMMMMMNx,.       ;KMMMMMMMMMMMMMO,.':dKWMMMMMMMXd;                
+            ,0MMMMMMMN0x:.    '0MMMMMMMMMMMMMNXXWWMMMMMMMWKd'                  
+             oWMMMMMMMMMWKdlod0NMMMMMMMMMMMMMMMMMMMMMMMWKl.                    
+             .dNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0l.                      
+              .:kXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0d;.                        
+                 'oXMMMMMMMMMMMMMMMMMMMMMMMMMMMMKl'.                           
+                  .kMMMMMMMMMMMMMMMMMMMMMMMMMMMMx.                             
+                  .kMMMMMMMMMMMMMMMMMMMMMMMMMMMWl                              
+                  .xMMMMMMMMMMMMMMMMMMMMMMMMMMM0,                              
+                   cNMMMMMMMMMMMMMMMMMMMMMMMMMNc                               
+                   .OMMMMMMMMMMMMMMMMMMMMMMMMMk.                               
+                    oWMMMMMMMMMMMMMMMMMMMMMMMNl                                
+                    '0MMMMMMMMMMMMMMMMMMMMMMMK,                                
+                     cXMMMMMMMMMMMMMMMMMMMMMMO.                                
+                     .lXMMMMMMMMMMMMMMMMMMMMNc                                 
+                      .xMMMMMMMMMMMMMMMMMMMWd.                                 
+                      .xMMMMMMMMMMMMMMMMMMMX;                                  
+                      '0MMMMMMMMMMMMMMMMMMMK;                                  
+                     .dWMMMMMMMMMMMMMMMMMMMX;                                  
+                    .xWMMMMMMMMMMMMMMMMMMMMWo                                  
+                   .oNMMMMMMMMMMMMMMMMMMMMMMO.                                 
+                   cXMMMMMMMMMMMMMMMMMMMMMMMK,                                 
+                  .xMMMMMMMMMMMMMMMMMMMMMMMMK,                                 
+                  .kMMMMMMMMMMMMMMMMMMMMMMMMX:                                 
+                  'kWMMMMMMMMMMMMMMMMMMMMMMMWl                                 
+                  ;0MMMMMMMMMMMMMMMMMMMMMMMMWo                                 
+                 .dNMMMMMMMMMMMMMMMMMMMMMMMMWd                                 
+                 .xMMMMMMMMMMMMMMMMMMMMMMMMMWd                                 
+                  cNMMMMMMMMMMMMMMMMMMMMMMMMWd                                 
+                  ,KMMMMMMMMMMMMMMMMMMMMMMMMWd                                 
+                  ,KMMMMMMMMMWOkNMMMMMMMMMMMWo                                 
+                  '0MMMMMMMMM0,.xWMMMMMMMMMMWo                                 
+                  '0MMMMMMMMMk. :XMMMMMMMMMMWl                                 
+                  '0MMMMMMMMWd. .kMMMMMMMMMMNl                                 
+                  .kMMMMMMMMNc   cNMMMMMMMMMK,                                 
+                  .xMMMMMMMM0,   .kMMMMMMMMM0'                                 
+                  .xMMMMMMMMk.   .dMMMMMMMMMO.                                 
+                  .kMMMMMMMWo    .xMMMMMMMMNl                                  
+                  .ckkkkkOOk;    .dWMMMMMMM0'                                  
+                                  ,xOKXNNWMO.                                  
+                                     ...';c;.                                  
+
+
+            His whole life was a million-to-one sh ot.
+ 
+            
+         :::::::::   ::::::::   ::::::::  :::    ::: :::   ::: 
+        :+:    :+: :+:    :+: :+:    :+: :+:   :+:  :+:   :+:  
+       +:+    +:+ +:+    +:+ +:+        +:+  +:+    +:+ +:+    
+      +#++:++#:  +#+    +:+ +#+        +#++:++      +#++:      
+     +#+    +#+ +#+    +#+ +#+        +#+  +#+      +#+        
+    #+#    #+# #+#    #+# #+#    #+# #+#   #+#     #+#         
+   ###    ###  ########   ########  ###    ###    ### 
+ 
+    https://open.spotify.com/artist/272ygo5fv9cYsiCLcV0HV2
+ 
+       https://www.imdb.com/title/tt0075148/fullcredits
+ 
+-->
