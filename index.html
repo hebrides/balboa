@@ -70,10 +70,6 @@
 <body>
 
     <main>
-        <form onsubmit="balboa();setTimeout(crawl,300);playSound();">
-            <label for="thenametoshow">What's your name?</label><br>
-            <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus>
-        </form>
     </main>
 
     <audio id="fanfare">
@@ -83,9 +79,18 @@
 </audio>
 
 <script>
+
+
+        const form = `
+        <form onsubmit="balboa();setTimeout(crawl,300);playSound();setTimeout(restore,10000)">
+            <label for="thenametoshow">What's your name?</label><br>
+            <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus>
+        </form>`
+
+        const main = document.querySelector('main');
+
         function balboa(){
             const balboa =  document.querySelector('input').value || 'BALBOA';
-            const main = document.querySelector('main');
             main.innerHTML = `
             <h1>${balboa}</h1>
             <br><br><br><br><br><br>`;
@@ -95,7 +100,7 @@
         function crawl() {
             const h1 = document.querySelector('h1');
             //scroll offscreen to the left the length of text, plus a little extra
-            const scrollTo = -h1.offsetWidth-350;  
+            const scrollTo = -h1.offsetWidth*2;  
             h1.insertAdjacentHTML('beforebegin',
             `<style>
                 @keyframes crawl-left {
@@ -116,6 +121,10 @@
 
         function playSound() {
             document.querySelector('audio').play();
+        }
+
+        function restore() {
+            main.innerHTML = form;            
         }
     </script>
 </body>
