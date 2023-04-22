@@ -51,6 +51,21 @@
         background: black;
         color: lightgray;
     }
+    h1 {
+        font-family: 'League Gothic', 'Arial Black', Impact, 'Franklin Gothic', sans-serif;
+        font-weight: 800;
+        font-size: calc(100vh);
+        text-transform: uppercase;
+        letter-spacing: -.015em;
+        margin: 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+        text-align: center;
+        transform: translateX(100vw);
+        display: inline-block;
+    }
 </style>
 <body>
 
@@ -72,21 +87,7 @@
             const balboa =  document.querySelector('input').value || 'BALBOA';
             const main = document.querySelector('main');
             main.innerHTML = `
-            <h1 style="
-            font-family: 'League Gothic', 'Arial Black', Impact, 'Franklin Gothic', sans-serif;
-            font-weight: 800;
-            font-size: calc(100vh);
-            text-transform: uppercase;
-            letter-spacing: -.015em;
-            margin: 0;
-            padding: 0 20px;
-            box-sizing: border-box;
-            white-space: nowrap;
-            scroll-behavior: smooth;
-            text-align: center;
-            transform: translateX(100vw);
-            display: inline-block;
-            ">${balboa}</h1>
+            <h1>${balboa}</h1>
             <br><br><br><br><br><br>`;
 
         }        
@@ -94,7 +95,7 @@
         function crawl() {
             const h1 = document.querySelector('h1');
             //scroll offscreen to the left the length of text, plus a little extra
-            const scrollTo = -h1.offsetWidth-10;  
+            const scrollTo = -h1.offsetWidth-350;  
             h1.insertAdjacentHTML('beforebegin',
             `<style>
                 @keyframes crawl-left {
