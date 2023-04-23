@@ -30,7 +30,7 @@
         position: absolute;
         text-align: center;
         top: 50%;
-        width: 100%;
+        width: 100%;        
     }
     input {
         background-color: transparent;
@@ -67,6 +67,16 @@
         transform: translateX(100vw);
         display: inline-block;
     }
+    .fade-in {
+        animation-name: fade-in;
+        animation-duration: .35s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+    }
+    @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
 </style>
 <body>
 
@@ -88,20 +98,19 @@
         function balboa(){
             const balboa =  document.querySelector('input').value || 'BALBOA';
             document.querySelector('main').innerHTML = `
-            <h1>${balboa}</h1>
-            <br><br><br><br><br><br>`;
+            <h1>${balboa}</h1>`;
 
         }        
 
         function crawl() {
             const h1 = document.querySelector('h1');
-            //scroll offscreen to the left the length of text, plus a little extra
-            const scrollTo = -h1.offsetWidth*2;  
+            // move to the left the length of screen plus headline width 
+            const scroll = -1*(window.innerWidth+h1.offsetWidth);  
             h1.insertAdjacentHTML('beforebegin',
             `<style>
                 @keyframes crawl-left {
                     to {
-                        transform: translateX(${scrollTo}px);
+                        transform: translateX(${scroll}px);
                     }
                 }
             </style>`
@@ -109,7 +118,7 @@
         
             h1.style.cssText += `
             animation-name: crawl-left;
-            animation-duration: 10s;
+            animation-duration: 10.75s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
             `;
@@ -121,7 +130,7 @@
 
         function resetForm() {            
             document.querySelector('main').innerHTML = `
-            <form onsubmit="balboa();setTimeout(crawl,300);playSound();setTimeout(resetForm,12000)">
+            <form class="fade-in" onsubmit="balboa();setTimeout(crawl,300);playSound();setTimeout(resetForm,12000)">
                 <label for="thenametoshow">What's your name?</label><br>
                 <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus>
             </form>`           
@@ -133,6 +142,7 @@
 </html>
 
 <!-- 
+  
   
     
 
