@@ -54,6 +54,7 @@
     h1 {
         font-family: 'League Gothic', 'Arial Black', Impact, 'Franklin Gothic', sans-serif;
         font-weight: 800;
+        color: white;
         font-size: calc(100vh);
         text-transform: uppercase;
         letter-spacing: -.015em;
@@ -78,20 +79,15 @@
   Your browser does not support the audio tag.
 </audio>
 
-<script>
+    <script>
 
-
-        const form = `
-        <form onsubmit="balboa();setTimeout(crawl,300);playSound();setTimeout(restore,10000)">
-            <label for="thenametoshow">What's your name?</label><br>
-            <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus>
-        </form>`
-
-        const main = document.querySelector('main');
+        window.onload = (event) => {
+            resetForm();
+        };        
 
         function balboa(){
             const balboa =  document.querySelector('input').value || 'BALBOA';
-            main.innerHTML = `
+            document.querySelector('main').innerHTML = `
             <h1>${balboa}</h1>
             <br><br><br><br><br><br>`;
 
@@ -123,8 +119,12 @@
             document.querySelector('audio').play();
         }
 
-        function restore() {
-            main.innerHTML = form;            
+        function resetForm() {            
+            document.querySelector('main').innerHTML = `
+            <form onsubmit="balboa();setTimeout(crawl,300);playSound();setTimeout(resetForm,12000)">
+                <label for="thenametoshow">What's your name?</label><br>
+                <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus>
+            </form>`           
         }
     </script>
 </body>
