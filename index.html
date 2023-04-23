@@ -96,9 +96,11 @@
         };        
 
         function balboa(){
-            const balboa =  document.querySelector('input').value || 'BALBOA';
+            const balboa = document.querySelector('input');
+            // Assign default value to dom element to fix Safari bug
+            balboa.value = balboa.value || 'BALBOA';
             document.querySelector('main').innerHTML = `
-            <h1>${balboa}</h1>`;
+            <h1>${balboa.value}</h1>`;
 
         }        
 
