@@ -1,2 +1,8 @@
+
+# Ignore
 media/*
 .DS_Store
+
+
+# Allow
+!media/conti-motif.*
