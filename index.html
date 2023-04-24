@@ -120,7 +120,7 @@
         
             h1.style.cssText += `
             animation-name: crawl-left;
-            animation-duration: 14s;
+            animation-duration: 14  s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
             `;
@@ -134,7 +134,7 @@
             document.querySelector('main').innerHTML = `
             <form class="fade-in" onsubmit="balboa();setTimeout(crawl,300);playSound();setTimeout(resetForm,12000)">
                 <label for="thenametoshow">What's your name?</label><br>
-                <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus>
+                <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus autocomplete="off">
             </form>`           
         }
     </script>
