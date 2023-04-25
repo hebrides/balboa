@@ -6,3 +6,4 @@ media/*
 
 # Allow
 !media/conti-motif.*
+!media/balboa.png

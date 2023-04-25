@@ -4,7 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Social Media -->
+    <meta property="og:image" content="media/balboa.png" />
+    <meta property="og:description" content="There is no tomorrow! Let's go!" />
+
+
     <title>💪</title>
+
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=League+Gothic" rel="stylesheet" type="text/css" />
@@ -140,7 +148,7 @@
             <form class="fade-in" onsubmit="balboa();setTimeout(crawl,300);playSound();setTimeout(resetForm,12000)">
                 <label for="thenametoshow">What's your name?</label><br>
                 <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus autocomplete="off">
-                ${touchDevice ? `<button type="submit">I'm ready!</button>` : ``}                
+                ${touchDevice ? `<button type="submit">I'm ready !</button>` : ``}                
             </form>`;
         }
     </script>
