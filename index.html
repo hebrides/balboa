@@ -44,12 +44,16 @@
         letter-spacing: 4px;
     }
     button {
-        padding: 5px 15px;
-        font-weight: 400;
-        font-size: 150%;
+        font-weight: 200;
+        font-size: 100%;
         padding: 10px 25px;
         background: black;
         color: lightgray;
+        border-radius: 50px; 
+        letter-spacing: 2px;
+        display: block;
+        margin: 0 auto;
+        margin-top: 40px;
     }
     h1 {
         font-family: 'League Gothic', 'Arial Black', Impact, 'Franklin Gothic', sans-serif;
@@ -120,7 +124,7 @@
         
             h1.style.cssText += `
             animation-name: crawl-left;
-            animation-duration: 14  s;
+            animation-duration: 14s;
             animation-timing-function: linear;
             animation-fill-mode: forwards;
             `;
@@ -130,12 +134,14 @@
             document.querySelector('audio').play();
         }
 
-        function resetForm() {            
+        function resetForm() {
+            const touchDevice = ('ontouchstart' in document.documentElement);
             document.querySelector('main').innerHTML = `
             <form class="fade-in" onsubmit="balboa();setTimeout(crawl,300);playSound();setTimeout(resetForm,12000)">
                 <label for="thenametoshow">What's your name?</label><br>
                 <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus autocomplete="off">
-            </form>`           
+                ${touchDevice ? `<button type="submit">I'm ready!</button>` : ``}                
+            </form>`;
         }
     </script>
 </body>
