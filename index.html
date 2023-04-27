@@ -181,6 +181,15 @@
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
+
+        function getNameAPI(){ // ?name=Rocky+Balboa
+            const params = new URLSearchParams(window.location.search);
+            return params.get("name"); // Don't forget to sanitize, and shorten this to prevent spam / weirdness
+        } 
+
+        function shareWithFriend() {
+            // TODO
+        }
     </script>
 </body>
 
