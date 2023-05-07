@@ -85,6 +85,13 @@
         transform: translateX(100vw);
         display: inline-block;
     }
+    a {
+        text-decoration: none;
+        color: lightgray;
+        font-size: 90%;
+        padding: 15px; 
+        display: block;
+    }
     .fade-in {
         animation-name: fade-in;
         animation-duration: .35s;
@@ -108,7 +115,6 @@
         }
         91%, 93% {
             transform:rotate(7deg);
-
         }
         92%, 94% {
             transform: rotate(-7deg);
@@ -126,8 +132,8 @@
     <audio id="fanfare" preload="auto">
         <source src="media/conti-motif.ogg" type="audio/ogg">
         <source src="media/conti-motif.mp3" type="audio/mpeg">
-  Your browser does not support the audio tag.
-</audio>
+      Your browser does not support the audio tag.
+    </audio>
 
     <script>
 
@@ -188,8 +194,8 @@
             const touchDevice = ('ontouchstart' in document.documentElement);            
             document.querySelector('main').innerHTML = `
             <form class="fade-in" onsubmit="balboa();setTimeout(crawl,300);playSound();setTimeout(resetForm,12000)">
-                <label for="thenametoshow">What's your name?</label><br>
-                <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus autocomplete="off">
+                <label for="theNameToShow">What's your name?</label><br>
+                <input type="text" id="theNameToShow" name="theNameToShow" maxlength=26 autofocus autocomplete="off">
                 ${touchDevice ? `<button type="submit">${getPhrase()}</button>` : ``}                
             </form>`;
         }
@@ -229,12 +235,24 @@
 
         function shareWithFriend() {
             document.querySelector('main').innerHTML = `
-            <form class="fade-in" onsubmit="displayShare();">
-                <p>Enter name of friend:</p>
-                <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus autocomplete="off">
-                <button type="submit" value="link" style="display: inline;">Share!</button>
-                <a type="submit" value="link" style="margin: 30px; font-size: 90%;">Start Over</a>
+            <form class="fade-in" onsubmit="showShareForm();">
+                <button type="submit" onclick="showShareForm();">Share Balboa!</button>
+                <a href="#" onclick="resetForm();">Start Over</a>
             </form>`;
+        }
+
+        function showShareForm() {
+            document.querySelector('main').innerHTML = `
+            <form class="fade-in" onsubmit="showShareURL();">
+                <p>Share the love!<br>Enter a friend's name:</p><br>
+                <input type="text" id="theNameToShare" name="theNameToShare" maxlength="26" autofocus="" autocomplete="off"><br>
+                <button type="submit" onclick="showShareURL();">Share With Name</button>
+                <a href="#" onclick="showShareURL();" style="padding-top: 30px;">Just Share Balboa Link</a>
+                <a href="#" onclick="resetForm();">Start Over</a>
+            </form>`;
+        }
+        
+        function showShareURL() {
         }
     </script>
 </body>
