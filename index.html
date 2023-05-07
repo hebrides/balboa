@@ -42,7 +42,7 @@
         top: 50%;
         width: 100%;        
     }
-    label {
+    label, p {
         line-height: 38px;
     }
     input {
@@ -94,6 +94,28 @@
         from { opacity: 0; }
         to { opacity: 1; }
     }
+    .wiggle {
+        animation-name: wiggle;
+        animation-duration: 7s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+    }
+    @keyframes wiggle {
+        from, to {
+            transform: translate3d(0, 0, 0);
+        }
+        91%, 93% {
+            transform:rotate(7deg);
+
+        }
+        92%, 94% {
+            transform: rotate(-7deg);
+        }
+        90%, 95% {
+            transform: none;
+        }
+    }
 </style>
 <body>
 
@@ -113,9 +135,7 @@
             if (nameFromURL) {
                 document.querySelector('main').innerHTML = `
                 <form class="fade-in" onsubmit="balboa('${nameFromURL}');setTimeout(crawl,300);playSound();setTimeout(resetForm,12000)">
-                <label>You're one in a million, <br/><b>${nameFromURL}!</b><br/>
-                    A secret admirerer sent you a message!</label><br>
-                <button type="submit">${getPhrase()}</button>            
+                <button type="submit" class="wiggle">${getPhrase()}</button>            
                 </form>`;
                 history.pushState("",document.title,window.location.pathname);       
             } else {
