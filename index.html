@@ -42,6 +42,9 @@
         top: 50%;
         width: 100%;        
     }
+    label {
+        line-height: 38px;
+    }
     input {
         background-color: transparent;
         border: none;
@@ -106,16 +109,31 @@
     <script>
 
         window.onload = (event) => {
-            resetForm();
-        };        
+            const nameFromURL = getNameFromURL();
+            if (nameFromURL) {
+                document.querySelector('main').innerHTML = `
+                <form class="fade-in" onsubmit="balboa('${nameFromURL}');setTimeout(crawl,300);playSound();setTimeout(resetForm,12000)">
+                <label>You're one in a million, <br/><b>${nameFromURL}!</b><br/>
+                    A secret admirerer sent you a message!</label><br>
+                <button type="submit">${getPhrase()}</button>            
+                </form>`;
+                history.pushState("",document.title,window.location.pathname);       
+            } else {
+                resetForm();
+            }
+        }
 
-        function balboa(){
-            const balboa = document.querySelector('input');
-            // Assign default value to dom element to fix Safari bug
-            balboa.value = balboa.value || 'BALBOA';
-            document.querySelector('main').innerHTML = `
-            <h1 style="visibility: hidden;">${balboa.value}</h1>`;
-
+        function balboa(nameFromURL){                        
+            if (!nameFromURL) {            
+                const balboa = document.querySelector('input');
+                // Assign default value to dom element to fix Safari bug
+                balboa.value = balboa.value || 'BALBOA';
+                document.querySelector('main').innerHTML = `
+                <h1 style="visibility: hidden;">${balboa.value}</h1>`;
+            } else {
+                document.querySelector('main').innerHTML = `
+                <h1 style="visibility: hidden;">${nameFromURL}</h1>`;
+            }
         }        
 
         function crawl() {
@@ -145,7 +163,7 @@
             document.querySelector('audio').play();
         }
 
-        function resetForm() {
+        function resetForm() {               
             const touchDevice = ('ontouchstart' in document.documentElement);            
             document.querySelector('main').innerHTML = `
             <form class="fade-in" onsubmit="balboa();setTimeout(crawl,300);playSound();setTimeout(resetForm,12000)">
@@ -154,6 +172,8 @@
                 ${touchDevice ? `<button type="submit">${getPhrase()}</button>` : ``}                
             </form>`;
         }
+
+
 
         function getPhrase() {
             const phrases = 
@@ -182,9 +202,10 @@
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        function getNameAPI(){ // ?name=Rocky+Balboa
+        function getNameFromURL(){ // ?name=Rocky+Balboa
             const params = new URLSearchParams(window.location.search);
-            return params.get("name"); // Don't forget to sanitize, and shorten this to prevent spam / weirdness
+            const nameFromURL = params.get("name") || '';
+            return nameFromURL.slice(0,26);  
         } 
 
         function shareWithFriend() {
