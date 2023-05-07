@@ -67,6 +67,7 @@
         display: block;
         margin: 0 auto;
         margin-top: 40px;
+	line-height: 30px;
     }
     h1 {
         font-family: 'League Gothic', 'Arial Black', Impact, 'Franklin Gothic', sans-serif;
@@ -103,7 +104,7 @@
     }
     @keyframes wiggle {
         from, to {
-            transform: translate3d(0, 0, 0);
+            transform: none;
         }
         91%, 93% {
             transform:rotate(7deg);
@@ -134,8 +135,8 @@
             const nameFromURL = getNameFromURL();
             if (nameFromURL) {
                 document.querySelector('main').innerHTML = `
-                <form class="fade-in" onsubmit="balboa('${nameFromURL}');setTimeout(crawl,300);playSound();setTimeout(resetForm,12000)">
-                <button type="submit" class="wiggle">${getPhrase()}</button>            
+                <form class="fade-in" onsubmit="balboa('${nameFromURL}');setTimeout(crawl,300);playSound();setTimeout(shareWithFriend,12000)">
+                <button type="submit" class="wiggle">Let's go, ${nameFromURL}!</button>            
                 </form>`;
                 history.pushState("",document.title,window.location.pathname);       
             } else {
@@ -193,8 +194,6 @@
             </form>`;
         }
 
-
-
         function getPhrase() {
             const phrases = 
             [`I'm ready!`, 
@@ -211,7 +210,7 @@
             `I must break you!`,
             `No rematch!`,
             `I ain't no bum!`,
-            `I love you!`,
+            `I love you, Rocky!`,
             `Come on, Stallion!`];
             return phrases[getRandomInt(0, phrases.length - 1)];
         }
@@ -229,7 +228,13 @@
         } 
 
         function shareWithFriend() {
-            // TODO
+            document.querySelector('main').innerHTML = `
+            <form class="fade-in" onsubmit="displayShare();">
+                <p>Enter name of friend:</p>
+                <input type="text" id="thenametoshow" name="thenametoshow" maxlength=26 autofocus autocomplete="off">
+                <button type="submit" value="link" style="display: inline;">Share!</button>
+                <a type="submit" value="link" style="margin: 30px; font-size: 90%;">Start Over</a>
+            </form>`;
         }
     </script>
 </body>
