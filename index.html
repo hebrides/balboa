@@ -56,6 +56,20 @@
         text-align: center;
         letter-spacing: 4px;
     }
+    textarea {
+        font-family: monospace;
+        font-weight: bolder;
+        color: lightgray;
+        text-align: center;
+        width: 100%;
+        background: black;
+        border: none;
+        outline: none;
+    }
+    textarea::selection, input::selection {
+        color: black;
+        background: white;        
+    }
     button {
         font-weight: 200;
         font-size: 100%;
@@ -245,20 +259,23 @@
         function showShareForm() {
             document.querySelector('main').innerHTML = `
             <form class="fade-in" onsubmit="shareURL();">
-                <p>Enter your friend's name:</p><br>
+                <p>Enter a friend's name:</p><br>
                 <input type="text" id="theNameToShare" name="theNameToShare" maxlength="26" autofocus="" autocomplete="off"><br>
                 <button id="shareURLButton" type="submit" onclick="shareURL();">Share</button>
             </form>`;
         }
 
         async function shareURL() {
-            const shareName = document.querySelector('#theNameToShare');
+            const shareName = document.querySelector('#theNameToShare');            
             const urlToShare = window.location.host + window.location.pathname + '?name=' + encodeURI(shareName.value).replace(/%20/g, "+");            
             document.querySelector('main').innerHTML = `
             <form class="fade-in" onsubmit="resetForm();">
-                <p style="padding:0 20px; overflow-wrap: anywhere;">Copy this link:<br/><b>${urlToShare}</b></p><br>
+                <p id="linktoCopy" style="padding:0 20px; overflow-wrap: anywhere;">Copy this link:<br/>
+                    <textarea rows="2" onclick="this.focus();this.select();this.style.outline='none'">${urlToShare}</textarea>
+                </p>
                 <button style="margin-top: 15px;" type="submit" onclick="resetForm();">Okay</button>
             </form>`;
+
         }
     </script>
 </body>
