@@ -130,7 +130,7 @@
     <main>
     </main>
 
-    <audio id="fanfare" preload="auto">
+    <audio id="fanfare" preload="auto" autoplay="false" >
         <source src="media/conti-motif.ogg" type="audio/ogg">
         <source src="media/conti-motif.mp3" type="audio/mpeg">
       Your browser does not support the audio tag.
@@ -237,7 +237,7 @@
         function shareWithFriend() {
             document.querySelector('main').innerHTML = `
             <form class="fade-in" onsubmit="showShareForm();">
-                <button type="submit" onclick="showShareForm();">Share</button>
+                <button type="submit" onclick="showShareForm();">Share with a Friend</button>
                 <a href="#" onclick="resetForm();">Start Again</a>
             </form>`;
         }
@@ -245,7 +245,7 @@
         function showShareForm() {
             document.querySelector('main').innerHTML = `
             <form class="fade-in" onsubmit="shareURL();">
-                <p>Enter a friend's name:</p><br>
+                <p>Enter your friend's name:</p><br>
                 <input type="text" id="theNameToShare" name="theNameToShare" maxlength="26" autofocus="" autocomplete="off"><br>
                 <button id="shareURLButton" type="submit" onclick="shareURL();">Share</button>
             </form>`;
@@ -257,7 +257,7 @@
             document.querySelector('main').innerHTML = `
             <form class="fade-in" onsubmit="resetForm();">
                 <p style="padding:0 20px; overflow-wrap: anywhere;">Copy this link:<br/><b>${urlToShare}</b></p><br>
-                <button style="margin-top: 15px;" type="submit" onclick="resetForm();">Start Again</button>
+                <button style="margin-top: 15px;" type="submit" onclick="resetForm();">Okay</button>
             </form>`;
         }
     </script>
